@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/vrf_container"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background" >
+    
+
+  <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+     
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/etFirstName"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="First Name"
+                android:textColor="@color/title_text" 
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+            
+            <EditText
+                android:id="@+id/etFirstName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/ibFirstName"
+                android:layout_toRightOf="@+id/textView1"
+                android:inputType="textMultiLine"
+                android:textColor="@color/title_text"
+                android:textColorHint="@color/title_text" />
+
+            <ImageButton
+                android:id="@+id/ibFirstName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/btdesc"
+                android:onClick="speak"
+                android:src="@drawable/vr_launcher" />
+
+
+        </RelativeLayout>
+
+          <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/etLastName"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="Last Name"
+                android:textColor="@color/title_text" 
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+            
+            <EditText
+                android:id="@+id/etLastName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/ibLastName"
+                android:layout_toRightOf="@+id/textView2"
+                android:inputType="textMultiLine"
+                android:textColor="@color/title_text"
+                android:textColorHint="@color/title_text" />
+
+            <ImageButton
+                android:id="@+id/ibLastName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/btdesc"
+                android:onClick="speak"
+                android:src="@drawable/vr_launcher" />
+
+        </RelativeLayout>
+          <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+              
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/etDlNumber"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="License Number "
+                android:textColor="@color/title_text" 
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+            
+            <EditText
+                android:id="@+id/etDlNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/ibDlNumber"
+                android:layout_toRightOf="@+id/textView3"
+                android:inputType="textMultiLine"
+                android:textColor="@color/title_text"
+                android:textColorHint="@color/title_text" />
+
+            <ImageButton
+                android:id="@+id/ibDlNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/btdesc"
+                android:onClick="speak"
+                android:src="@drawable/vr_launcher" />
+
+        </RelativeLayout>
+
+          <RelativeLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" >
+
+              
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/etAddress"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="Address"
+                android:textColor="@color/title_text" 
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+            
+            <EditText
+                android:id="@+id/etAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/ibAddress"
+                android:layout_toRightOf="@+id/textView2"
+                android:inputType="textMultiLine"
+                android:textColor="@color/title_text"
+                android:textColorHint="@color/title_text" />
+
+            <ImageButton
+                android:id="@+id/ibAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/btdesc"
+                android:onClick="speak"
+                android:src="@drawable/vr_launcher" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" 
+      android:gravity="center">
+
+      <Button
+          android:id="@+id/bNext"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:onClick="nextHandler"
+          android:text="@string/check_visitor"
+          android:textColor="@color/title_text" />
+
+      <Button
+          android:id="@+id/home"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:onClick="goHome"
+          android:text="Home"
+          android:textColor="@color/title_text" />
+
+  </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,390 @@
+> library(bnlearn)
+> library(Rgraphviz)
+> library(microbenchmark)
+> 
+> args <- commandArgs(trailingOnly = TRUE)
+> sink(file="E:/ProjectPGM/MyCode/log_insurance2.rlog",append=FALSE)
+> sink()
+> args <- array(c("asia"),c(1,1))
+> print("Command args are == ")
+[1] "Command args are == "
+> print(args)
+     [,1]  
+[1,] "asia"
+> debugFlag <- FALSE
+> 
+> # vDatasets <- list()#"alarm" = alarm,"hailfinder" = hailfinder,"insurance" = insurance)
+> # vDatasets["alarm"] <- alarm
+> # vDatasets["hailfinder"] <- hailfinder
+> # vDatasets["insurance"] <- insurance
+> 
+> # print(vDatasets)
+> print("#################################################")
+[1] "#################################################"
+> print("##Score Based Algorithms#########################")
+[1] "##Score Based Algorithms#########################"
+> print("#################################################")
+[1] "#################################################"
+> if(identical(args[1], "alarm")){
++ data(alarm)
++ input = alarm
++ print("Using Alarm Dataset")
++ }else if(identical(args[1], "insurance")){
++   data(insurance)
++   input = insurance
++   print("Using insurance Dataset")
++ }else if(identical(args[1], "hailfinder")){
++   data(hailfinder)
++   input = hailfinder
++   print("Using hailfinder Dataset")
++ }else if(identical(args[1], "asia")){
++   data(asia)
++   input = asia
++   print("Using asia Dataset")
++ }else{
++   data(alarm)
++   input = alarm
++   print("Defaults: Using Alarm Dataset")
++ }
+[1] "Using asia Dataset"
+> 
+> ##################################################################################################
+> ##Execute different algorithms
+>   #### Score based algorithm
+>   bn.hc = hc(input, debug=debugFlag) #Hill Climbing algorithm
+>   
+>   #### Constraint Based Algorithm
+>   v_gs = gs(alarm, blacklist=NULL) ##Grow Shrink algorithm
+>   V_iamb  = iamb(input,blacklist=NULL) ##c("FIO2","PVS") Incremental Association Marklov Blanket (IAMB) algorithmi
+>   v_fiamb = fast.iamb(input,blacklist=NULL) ##Fast Incremental Association Marklov Blanket (Fast-IAMB) algorithm
+>   v_iiamb = inter.iamb(input,blacklist=NULL) ##Interleaved Incremental Association Marklov Blanket (Inter-IAMB) algorithm
+>   
+>   #### Hybrid Algorithm
+>   v_mmhc = mmhc(input, debug=debugFlag) ##Max-min hill climbing
+>   v_rsmax2 = rsmax2(input) ##Two-Phase Restricted Maximization (RSMAX2) algorithm
+>   
+>   #### Local Discovery algorithm
+>   v_cl = chow.liu(input, debug=debugFlag) ##Chow Liu algorithm
+> 
+>   sink()
+> ##################################################################################################
+> 
+> 
+> ##################################################################################################
+> ##Compare results for each algorithms
+> print("Comparision between HC and self:")
+[1] "Comparision between HC and self:"
+> print(shd(bn.hc,bn.hc, debug = debugFlag))
+[1] 0
+> print(unlist(compare(bn.hc,bn.hc)) )
+tp fp fn 
+ 7  0  0 
+> print(compare(bn.hc,bn.hc,arcs = debugFlag)) 
+$tp
+[1] 7
+
+$fp
+[1] 0
+
+$fn
+[1] 0
+
+> 
+> print("Comparision between HC and GS:")
+[1] "Comparision between HC and GS:"
+> print(shd(bn.hc,v_gs, debug = debugFlag))
+Error in match.bn(learned, true) : 
+  the two networks have different node sets.
+> print(unlist(compare(bn.hc,v_gs)))
+Error in match.bn(target, current) : 
+  the two networks have different node sets.
+> print(compare(bn.hc,v_gs,arcs = debugFlag)) 
+Error in match.bn(target, current) : 
+  the two networks have different node sets.
+> 
+> print("Comparision between HC and IAMB:")
+[1] "Comparision between HC and IAMB:"
+> print(shd(bn.hc,V_iamb, debug = debugFlag))
+[1] 5
+> print(unlist(compare(bn.hc,V_iamb)))
+tp fp fn 
+ 3  1  4 
+> print(compare(bn.hc,V_iamb,arcs = debugFlag)) 
+$tp
+[1] 3
+
+$fp
+[1] 1
+
+$fn
+[1] 4
+
+> 
+> print("Comparision between HC and Fast-IAMB:")
+[1] "Comparision between HC and Fast-IAMB:"
+> print(shd(bn.hc,v_fiamb, debug = debugFlag))
+[1] 5
+> print(unlist(compare(bn.hc,v_fiamb)))
+tp fp fn 
+ 3  1  4 
+> print(compare(bn.hc,v_fiamb,arcs = debugFlag)) 
+$tp
+[1] 3
+
+$fp
+[1] 1
+
+$fn
+[1] 4
+
+> 
+> print("Comparision between HC and Inter-IAMB:")
+[1] "Comparision between HC and Inter-IAMB:"
+> print(shd(bn.hc,v_iiamb, debug = debugFlag))
+[1] 5
+> print(unlist(compare(bn.hc,v_iiamb)))
+tp fp fn 
+ 3  1  4 
+> print(compare(bn.hc,v_iiamb,arcs = debugFlag)) 
+$tp
+[1] 3
+
+$fp
+[1] 1
+
+$fn
+[1] 4
+
+> 
+> print("Comparision between HC and  MMHC:")
+[1] "Comparision between HC and  MMHC:"
+> print(shd(bn.hc,v_mmhc, debug = debugFlag))
+[1] 3
+> print(unlist(compare(bn.hc,v_mmhc)))
+tp fp fn 
+ 5  1  2 
+> print(compare(bn.hc,v_mmhc,arcs = debugFlag)) 
+$tp
+[1] 5
+
+$fp
+[1] 1
+
+$fn
+[1] 2
+
+> 
+> print("Comparision between HC and RSMAX2:")
+[1] "Comparision between HC and RSMAX2:"
+> print(shd(bn.hc,v_rsmax2, debug = debugFlag))
+[1] 4
+> print(unlist(compare(bn.hc,v_rsmax2)))
+tp fp fn 
+ 4  0  3 
+> print(compare(bn.hc,v_rsmax2,arcs = debugFlag)) 
+$tp
+[1] 4
+
+$fp
+[1] 0
+
+$fn
+[1] 3
+
+> 
+> print("Comparision between HC and Chow Liu:")
+[1] "Comparision between HC and Chow Liu:"
+> print(shd(bn.hc,v_cl, debug = debugFlag))
+[1] 6
+> print(unlist(compare(bn.hc,v_cl)))
+tp fp fn 
+ 0  7  7 
+> print(compare(bn.hc,v_cl,arcs = debugFlag)) 
+$tp
+[1] 0
+
+$fp
+[1] 7
+
+$fn
+[1] 7
+
+> 
+> 
+> sink()
+> ##################################################################################################
+> 
+> ##################################################################################################
+> ##Get execution time for different algorithms
+> print("execution time for HC:")
+[1] "execution time for HC:"
+> print(system.time(hc(input)))
+   user  system elapsed 
+      0       0       0 
+> 
+> print("execution time for GC:")
+[1] "execution time for GC:"
+> print(system.time( gc(input)))
+Garbage collection 11741 = 10851+469+421 (level 2) ... 
+38.3 Mbytes of cons cells used (61%)
+28.8 Mbytes of vectors used (50%)
+   user  system elapsed 
+   0.06    0.00    0.06 
+> 
+> print("execution time for IAMB:")
+[1] "execution time for IAMB:"
+> print(system.time(iamb(input)))
+   user  system elapsed 
+   0.03    0.00    0.03 
+> 
+> print("execution time for Fast-IAMB:")
+[1] "execution time for Fast-IAMB:"
+> print(system.time(fast.iamb(input)))
+   user  system elapsed 
+   0.03    0.00    0.04 
+> 
+> print("execution time for Inter-IAMB:")
+[1] "execution time for Inter-IAMB:"
+> print(system.time(inter.iamb(input)) )
+   user  system elapsed 
+   0.02    0.00    0.02 
+> 
+> print("execution time for MMHC:")
+[1] "execution time for MMHC:"
+> print(system.time(mmhc(input)) )
+   user  system elapsed 
+   0.01    0.00    0.01 
+> 
+> print("execution time for RSMAX2:")
+[1] "execution time for RSMAX2:"
+> print(system.time(rsmax2(input)))
+   user  system elapsed 
+   0.03    0.00    0.03 
+> 
+> print("execution time for Chow Liu:")
+[1] "execution time for Chow Liu:"
+> print(system.time(chow.liu(input)))
+   user  system elapsed 
+      0       0       0 
+> 
+> sink()
+> ##################################################################################################
+> 
+> ##################################################################################################
+> ##Get Scores for different algorithms
+> 
+> print("LogLik Score for HC:")
+[1] "LogLik Score for HC:"
+> print(score(bn.hc,input,type="loglik"))
+[1] -11034.9
+> 
+> print("LogLik  Score for GC:")
+[1] "LogLik  Score for GC:"
+> print(score(v_gs,input,type="loglik"))
+Error in check.bn.vs.data(x, data) : 
+  the network and the data have different numbers of variables.
+> 
+> print("LogLik Score for IAMB:")
+[1] "LogLik Score for IAMB:"
+> print(score(v_iamb,input,type="loglik"))
+Error in match(x, table, nomatch = 0L) : object 'v_iamb' not found
+> 
+> print("LogLik Score for Fast-IAMB:")
+[1] "LogLik Score for Fast-IAMB:"
+> print(score(v_fiamb,input,type="loglik"))
+[1] -12466.88
+> 
+> print("LogLik Score for Inter-IAMB:")
+[1] "LogLik Score for Inter-IAMB:"
+> print(score(v_iiamb,input,type="loglik"))
+[1] -12466.88
+> 
+> print("LogLik Score for MMHC:")
+[1] "LogLik Score for MMHC:"
+> print(score(v_mmhc,input,type="loglik"))
+[1] -12016.23
+> 
+> print("LogLik Score for RSMAX2:")
+[1] "LogLik Score for RSMAX2:"
+> print(score(v_rsmax2,input,type="loglik"))
+[1] -12231.6
+> 
+> print("LogLik Score for Chow Liu:")
+[1] "LogLik Score for Chow Liu:"
+> print(score(v_cl,input,type="loglik"))  
+Error in score(v_cl, input, type = "loglik") : 
+  the graph is only partially directed.
+> 
+> sink()
+> 
+> 
+>   print("K2 Score for HC:")
+[1] "K2 Score for HC:"
+> print(score(bn.hc,input,type="k2"))
+[1] -11109.47
+> 
+> print("K2  Score for GC:")
+[1] "K2  Score for GC:"
+> print(score(v_gs,input,type="k2"))
+Error in check.bn.vs.data(x, data) : 
+  the network and the data have different numbers of variables.
+> 
+> print("K2 Score for IAMB:")
+[1] "K2 Score for IAMB:"
+> print(score(v_iamb,input,type="k2"))
+Error in match(x, table, nomatch = 0L) : object 'v_iamb' not found
+> 
+> print("K2 Score for Fast-IAMB:")
+[1] "K2 Score for Fast-IAMB:"
+> print(score(v_fiamb,input,type="k2"))
+[1] -12529.7
+> 
+> print("K2 Score for Inter-IAMB:")
+[1] "K2 Score for Inter-IAMB:"
+> print(score(v_iiamb,input,type="k2"))
+[1] -12529.7
+> 
+> print("K2 Score for MMHC:")
+[1] "K2 Score for MMHC:"
+> print(score(v_mmhc,input,type="k2"))
+[1] -12086.05
+> 
+> print("K2 Score for RSMAX2:")
+[1] "K2 Score for RSMAX2:"
+> print(score(v_rsmax2,input,type="k2"))
+[1] -12291.37
+> 
+> print("K2 Score for Chow Liu:")
+[1] "K2 Score for Chow Liu:"
+> print(score(v_cl,input,type="k2"))  
+Error in score(v_cl, input, type = "k2") : 
+  the graph is only partially directed.
+> 
+> sink()
+> ##################################################################################################
+> ##Draw graph for different algorithms
+> par(mfrow = c(1,2), omi = rep(0, 4), mar = c(1, 0, 1, 0))
+> graphviz.plot(bn.hc,main = "Hill-Climbing algorithm")
+> 
+> par(mfrow = c(1,2), omi = rep(0, 4), mar = c(1, 0, 1, 0))
+> graphviz.plot(v_gs,main = "Grow-Shrink algorithm")
+> 
+> par(mfrow = c(1,2), omi = rep(0, 4), mar = c(1, 0, 1, 0))
+> graphviz.plot(V_iamb,main = "IAMB algorithm")
+> 
+> par(mfrow = c(1,2), omi = rep(0, 4), mar = c(1, 0, 1, 0))
+> graphviz.plot(v_fiamb,main = "FIAMB algorithm")
+> 
+> par(mfrow = c(1,2), omi = rep(0, 4), mar = c(1, 0, 1, 0))
+> graphviz.plot(v_iiamb,main = "IIAMB algorithm")
+> 
+> par(mfrow = c(1,2), omi = rep(0, 4), mar = c(1, 0, 1, 0))
+> graphviz.plot(v_mmhc,main = "MMHC algorithm")
+> 
+> par(mfrow = c(1,2), omi = rep(0, 4), mar = c(1, 0, 1, 0))
+> graphviz.plot(v_rsmax2,main = "RSMAX2 algorithm")
+> 
+> par(mfrow = c(1,2), omi = rep(0, 4), mar = c(1, 0, 1, 0))
+> graphviz.plot(v_cl,main = "Chow-Liu algorithm")
+> 
+> sink()

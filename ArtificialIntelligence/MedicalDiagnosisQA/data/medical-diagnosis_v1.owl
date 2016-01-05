@@ -1,0 +1,488 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY MedicalDiagnosis "http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#"
+     xml:base="http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis"
+     xmlns:MedicalDiagnosis="http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis">
+        <rdfs:label>Medical Diagnosis Ontology</rdfs:label>
+        <rdfs:comment>Ontology for meidical diagnosis</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#hasAbdominalPain -->
+
+    <owl:ObjectProperty rdf:about="&MedicalDiagnosis;hasAbdominalPain">
+        <rdfs:range rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:domain rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#hasBarkingCough -->
+
+    <owl:ObjectProperty rdf:about="&MedicalDiagnosis;hasBarkingCough">
+        <rdfs:range rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:domain rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#hasBodyPain -->
+
+    <owl:ObjectProperty rdf:about="&MedicalDiagnosis;hasBodyPain">
+        <rdfs:domain rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:range rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#hasBreathingProblems -->
+
+    <owl:ObjectProperty rdf:about="&MedicalDiagnosis;hasBreathingProblems">
+        <rdfs:domain rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:range rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#hasConstipation -->
+
+    <owl:ObjectProperty rdf:about="&MedicalDiagnosis;hasConstipation">
+        <rdfs:range rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:domain rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#hasCough -->
+
+    <owl:ObjectProperty rdf:about="&MedicalDiagnosis;hasCough">
+        <rdfs:range rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:domain rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#hasDiarrhea -->
+
+    <owl:ObjectProperty rdf:about="&MedicalDiagnosis;hasDiarrhea">
+        <rdfs:domain rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:range rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#hasFatigue -->
+
+    <owl:ObjectProperty rdf:about="&MedicalDiagnosis;hasFatigue">
+        <rdfs:range rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:domain rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#hasFever -->
+
+    <owl:ObjectProperty rdf:about="&MedicalDiagnosis;hasFever">
+        <rdfs:range rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:domain rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#hasNausea -->
+
+    <owl:ObjectProperty rdf:about="&MedicalDiagnosis;hasNausea">
+        <rdfs:range rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:domain rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#hasNoseBleeds -->
+
+    <owl:ObjectProperty rdf:about="&MedicalDiagnosis;hasNoseBleeds">
+        <rdfs:domain rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:range rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#hasProblemPassingGas -->
+
+    <owl:ObjectProperty rdf:about="&MedicalDiagnosis;hasProblemPassingGas">
+        <rdfs:range rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:domain rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#hasRectalPain -->
+
+    <owl:ObjectProperty rdf:about="&MedicalDiagnosis;hasRectalPain">
+        <rdfs:domain rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:range rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#hasRunnyNose -->
+
+    <owl:ObjectProperty rdf:about="&MedicalDiagnosis;hasRunnyNose">
+        <rdfs:range rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:domain rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#hasSoreThroat -->
+
+    <owl:ObjectProperty rdf:about="&MedicalDiagnosis;hasSoreThroat">
+        <rdfs:range rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:domain rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#hasVomiting -->
+
+    <owl:ObjectProperty rdf:about="&MedicalDiagnosis;hasVomiting">
+        <rdfs:range rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:domain rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#hasDisease -->
+
+    <owl:DatatypeProperty rdf:about="&MedicalDiagnosis;hasDisease">
+        <rdfs:domain rdf:resource="&MedicalDiagnosis;Disease"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#hasSymptom -->
+
+    <owl:DatatypeProperty rdf:about="&MedicalDiagnosis;hasSymptom">
+        <rdfs:domain rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#Disease -->
+
+    <owl:Class rdf:about="&MedicalDiagnosis;Disease"/>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#Symptoms -->
+
+    <owl:Class rdf:about="&MedicalDiagnosis;Symptoms"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#abdominalPain -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;abdominalPain">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <hasSymptom rdf:datatype="&xsd;boolean">true</hasSymptom>
+        <hasAbdominalPain rdf:resource="&MedicalDiagnosis;abdominalPain"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#appendicitis -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;appendicitis">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Disease"/>
+        <hasAbdominalPain rdf:resource="&MedicalDiagnosis;abdominalPain"/>
+        <hasConstipation rdf:resource="&MedicalDiagnosis;constipation"/>
+        <hasDiarrhea rdf:resource="&MedicalDiagnosis;diarrhea"/>
+        <hasFever rdf:resource="&MedicalDiagnosis;fever"/>
+        <hasProblemPassingGas rdf:resource="&MedicalDiagnosis;problemPassingGas"/>
+        <hasRectalPain rdf:resource="&MedicalDiagnosis;rectalPain"/>
+        <hasVomiting rdf:resource="&MedicalDiagnosis;vomitting"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#barkingCough -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;barkingCough">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <hasSymptom rdf:datatype="&xsd;boolean">true</hasSymptom>
+        <hasBarkingCough rdf:resource="&MedicalDiagnosis;barkingCough"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#bodyPain -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;bodyPain">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <hasSymptom rdf:datatype="&xsd;boolean">true</hasSymptom>
+        <hasBodyPain rdf:resource="&MedicalDiagnosis;bodyPain"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#breathingProblems -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;breathingProblems">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <hasSymptom rdf:datatype="&xsd;boolean">true</hasSymptom>
+        <hasBreathingProblems rdf:resource="&MedicalDiagnosis;breathingProblems"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#cold -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;cold">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Disease"/>
+        <hasCough rdf:resource="&MedicalDiagnosis;cough"/>
+        <hasRunnyNose rdf:resource="&MedicalDiagnosis;runnyNose"/>
+        <hasSoreThroat rdf:resource="&MedicalDiagnosis;soreThroat"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#constipation -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;constipation">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <hasSymptom rdf:datatype="&xsd;boolean">true</hasSymptom>
+        <hasConstipation rdf:resource="&MedicalDiagnosis;constipation"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#cough -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;cough">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <hasSymptom rdf:datatype="&xsd;boolean">true</hasSymptom>
+        <hasCough rdf:resource="&MedicalDiagnosis;cough"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#dengue -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;dengue">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Disease"/>
+        <hasAbdominalPain rdf:resource="&MedicalDiagnosis;abdominalPain"/>
+        <hasBreathingProblems rdf:resource="&MedicalDiagnosis;breathingProblems"/>
+        <hasFever rdf:resource="&MedicalDiagnosis;fever"/>
+        <hasNoseBleeds rdf:resource="&MedicalDiagnosis;noseBleeds"/>
+        <hasVomiting rdf:resource="&MedicalDiagnosis;vomitting"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#diarrhea -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;diarrhea">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <hasSymptom rdf:datatype="&xsd;boolean">true</hasSymptom>
+        <hasDiarrhea rdf:resource="&MedicalDiagnosis;diarrhea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#fatigue -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;fatigue">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <hasSymptom rdf:datatype="&xsd;boolean">true</hasSymptom>
+        <hasFatigue rdf:resource="&MedicalDiagnosis;fatigue"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#fever -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;fever">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <hasSymptom rdf:datatype="&xsd;boolean">true</hasSymptom>
+        <hasFever rdf:resource="&MedicalDiagnosis;fever"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#flu -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;flu">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Disease"/>
+        <hasCough rdf:resource="&MedicalDiagnosis;cough"/>
+        <hasDiarrhea rdf:resource="&MedicalDiagnosis;diarrhea"/>
+        <hasFatigue rdf:resource="&MedicalDiagnosis;fatigue"/>
+        <hasFever rdf:resource="&MedicalDiagnosis;fever"/>
+        <hasSoreThroat rdf:resource="&MedicalDiagnosis;soreThroat"/>
+        <hasVomiting rdf:resource="&MedicalDiagnosis;vomitting"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#nausea -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;nausea">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <hasSymptom rdf:datatype="&xsd;boolean">true</hasSymptom>
+        <hasNausea rdf:resource="&MedicalDiagnosis;nausea"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#noseBleeds -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;noseBleeds">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <hasSymptom rdf:datatype="&xsd;boolean">true</hasSymptom>
+        <hasNoseBleeds rdf:resource="&MedicalDiagnosis;noseBleeds"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#problemPassingGas -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;problemPassingGas">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <hasSymptom rdf:datatype="&xsd;boolean">true</hasSymptom>
+        <hasProblemPassingGas rdf:resource="&MedicalDiagnosis;problemPassingGas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#rectalPain -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;rectalPain">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <hasSymptom rdf:datatype="&xsd;boolean">true</hasSymptom>
+        <hasRectalPain rdf:resource="&MedicalDiagnosis;rectalPain"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#runnyNose -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;runnyNose">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <hasSymptom rdf:datatype="&xsd;boolean">true</hasSymptom>
+        <hasRunnyNose rdf:resource="&MedicalDiagnosis;runnyNose"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#soreThroat -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;soreThroat">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <hasSymptom rdf:datatype="&xsd;boolean">true</hasSymptom>
+        <hasSoreThroat rdf:resource="&MedicalDiagnosis;soreThroat"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#swineFlu -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;swineFlu">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Disease"/>
+        <hasBarkingCough rdf:resource="&MedicalDiagnosis;barkingCough"/>
+        <hasFever rdf:resource="&MedicalDiagnosis;fever"/>
+        <hasRunnyNose rdf:resource="&MedicalDiagnosis;runnyNose"/>
+        <hasSoreThroat rdf:resource="&MedicalDiagnosis;soreThroat"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/arun/ontologies/2014/11/MedicalDiagnosis#vomitting -->
+
+    <owl:NamedIndividual rdf:about="&MedicalDiagnosis;vomitting">
+        <rdf:type rdf:resource="&MedicalDiagnosis;Symptoms"/>
+        <hasSymptom rdf:datatype="&xsd;boolean">true</hasSymptom>
+        <hasVomiting rdf:resource="&MedicalDiagnosis;vomitting"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+

@@ -1,0 +1,53 @@
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/container"
+        tools:context="edu.cloud.iot.reception.FaceRecognitionActivity"
+        tools:ignore="MergeRootFrame"
+        android:background="@drawable/background"
+        >
+
+        <FrameLayout
+            android:id="@+id/flCamera"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+         />
+        <LinearLayout 
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="55dp">
+
+        <Button
+            android:id="@+id/bCapture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="captureHandler"
+            android:text="@string/sCapture"
+            android:textColor="@color/title_text" />
+
+        <Button
+            android:id="@+id/bNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:onClick="nextHandler"
+            android:text="@string/sNext"
+            android:textColor="@color/title_text" />
+        
+        <Button
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="goHome"
+            android:text="Home"
+            android:textColor="@color/title_text" />
+
+        </LinearLayout>
+    </FrameLayout>

@@ -1,0 +1,270 @@
+> library(bnlearn)
+> library(Rgraphviz)
+> library(microbenchmark)
+> 
+> args <- commandArgs(trailingOnly = TRUE)
+> sink(file="./log_insurance.rlog")
+> sink()
+> args <- array(c("alarm"),c(1,1))
+> print("args ==")
+[1] "args =="
+> print(args[1])
+[1] "alarm"
+> 
+> # vDatasets <- list()#"alarm" = alarm,"hailfinder" = hailfinder,"insurance" = insurance)
+> # vDatasets["alarm"] <- alarm
+> # vDatasets["hailfinder"] <- hailfinder
+> # vDatasets["insurance"] <- insurance
+> 
+> # print(vDatasets)
+> print("#################################################")
+[1] "#################################################"
+> print("##Score Based Algorithms#########################")
+[1] "##Score Based Algorithms#########################"
+> print("#################################################")
+[1] "#################################################"
+> if(identical(args[1], "alarm")){
++ data(alarm)
++ input = alarm
++ print("Using Alarm Dataset")
++ }else if(identical(args[1], "insurance")){
++   data(insurance)
++   input = insurance
++   print("Using insurance Dataset")
++ }else if(identical(args[1], "hailfinder")){
++   data(hailfinder)
++   input = hailfinder
++   print("Using hailfinder Dataset")
++ }else{
++   data(alarm)
++   input = alarm
++   print("Defaults: Using Alarm Dataset")
++ }
+[1] "Using Alarm Dataset"
+> 
+> ##################################################################################################
+> ##Execute different algorithms
+>   #### Score based algorithm
+>   bn.hc = hc(input, debug=FALSE) #Hill Climbing algorithm
+>   
+>   #### Constraint Based Algorithm
+>   v_gs = gs(alarm, blacklist=NULL) ##Grow Shrink algorithm
+>   V_iamb  = iamb(input,blacklist=NULL) ##c("FIO2","PVS") Incremental Association Marklov Blanket (IAMB) algorithmi
+>   v_fiamb = fast.iamb(input,blacklist=NULL) ##Fast Incremental Association Marklov Blanket (Fast-IAMB) algorithm
+>   v_iiamb = inter.iamb(input,blacklist=NULL) ##Interleaved Incremental Association Marklov Blanket (Inter-IAMB) algorithm
+>   
+>   #### Hybrid Algorithm
+>   v_mmhc = mmhc(input, debug=FALSE) ##Max-min hill climbing
+>   v_rsmax2 = rsmax2(input) ##Two-Phase Restricted Maximization (RSMAX2) algorithm
+>   
+>   #### Local Discovery algorithm
+>   v_cl = chow.liu(input, debug=FALSE) ##Chow Liu algorithm
+> 
+>   sink()
+> ##################################################################################################
+> 
+> 
+> ##################################################################################################
+> ##Compare results for each algorithms
+> print("Comparision between HC and self:")
+[1] "Comparision between HC and self:"
+> print(unlist(compare(bn.hc,bn.hc)) )
+tp fp fn 
+53  0  0 
+> 
+> print("Comparision between HC and GS:")
+[1] "Comparision between HC and GS:"
+> print(unlist(compare(bn.hc,v_gs)))
+tp fp fn 
+ 6 18 47 
+> 
+> print("Comparision between HC and IAMB:")
+[1] "Comparision between HC and IAMB:"
+> print(unlist(compare(bn.hc,V_iamb)))
+tp fp fn 
+17 18 36 
+> 
+> print("Comparision between HC and Fast-IAMB:")
+[1] "Comparision between HC and Fast-IAMB:"
+> print(unlist(compare(bn.hc,v_fiamb)))
+tp fp fn 
+19 16 34 
+> 
+> print("Comparision between HC and Inter-IAMB:")
+[1] "Comparision between HC and Inter-IAMB:"
+> print(unlist(compare(bn.hc,v_iiamb)))
+tp fp fn 
+19 20 34 
+> 
+> print("Comparision between HC and  MMHC:")
+[1] "Comparision between HC and  MMHC:"
+> print(unlist(compare(bn.hc,v_mmhc)))
+tp fp fn 
+25 10 28 
+> 
+> print("Comparision between HC and RSMAX2:")
+[1] "Comparision between HC and RSMAX2:"
+> print(unlist(compare(bn.hc,v_rsmax2)))
+tp fp fn 
+11 12 42 
+> 
+> print("Comparision between HC and Chow Liu:")
+[1] "Comparision between HC and Chow Liu:"
+> print(unlist(compare(bn.hc,v_cl)))
+tp fp fn 
+ 0 36 53 
+> 
+> 
+> sink()
+> ##################################################################################################
+> 
+> ##################################################################################################
+> ##Get execution time for different algorithms
+> print("execution time for HC:")
+[1] "execution time for HC:"
+> print(system.time(hc(input)))
+   user  system elapsed 
+   0.78    0.00    0.78 
+> 
+> print("execution time for GC:")
+[1] "execution time for GC:"
+> print(system.time( gc(input)))
+Garbage collection 4274 = 3920+180+174 (level 2) ... 
+37.1 Mbytes of cons cells used (59%)
+23.3 Mbytes of vectors used (40%)
+   user  system elapsed 
+   0.06    0.00    0.06 
+> 
+> print("execution time for IAMB:")
+[1] "execution time for IAMB:"
+> print(system.time(iamb(input)))
+   user  system elapsed 
+   1.66    0.00    1.65 
+> 
+> print("execution time for Fast-IAMB:")
+[1] "execution time for Fast-IAMB:"
+> print(system.time(fast.iamb(input)))
+   user  system elapsed 
+    1.5     0.0     1.5 
+> 
+> print("execution time for Inter-IAMB:")
+[1] "execution time for Inter-IAMB:"
+> print(system.time(inter.iamb(input)) )
+   user  system elapsed 
+   1.64    0.00    1.64 
+> 
+> print("execution time for MMHC:")
+[1] "execution time for MMHC:"
+> print(system.time(mmhc(input)) )
+   user  system elapsed 
+   0.94    0.00    0.93 
+> 
+> print("execution time for RSMAX2:")
+[1] "execution time for RSMAX2:"
+> print(system.time(rsmax2(input)))
+   user  system elapsed 
+   1.55    0.00    1.54 
+> 
+> print("execution time for Chow Liu:")
+[1] "execution time for Chow Liu:"
+> print(system.time(chow.liu(input)))
+   user  system elapsed 
+   0.08    0.00    0.08 
+> 
+> sink()
+> ##################################################################################################
+> 
+> ##################################################################################################
+> ##Get Scores for different algorithms
+> 
+> print("LogLik Score for HC:")
+[1] "LogLik Score for HC:"
+> print(score(bn.hc,input,type="loglik"))
+[1] -217488.6
+> 
+> print("LogLik  Score for GC:")
+[1] "LogLik  Score for GC:"
+> print(score(v_gs,input,type="loglik"))
+Error in score(v_gs, input, type = "loglik") : 
+  the graph is only partially directed.
+> 
+> print("LogLik Score for IAMB:")
+[1] "LogLik Score for IAMB:"
+> print(score(V_iamb,input,type="loglik"))
+Error in score(V_iamb, input, type = "loglik") : 
+  the graph is only partially directed.
+> 
+> print("LogLik Score for Fast-IAMB:")
+[1] "LogLik Score for Fast-IAMB:"
+> print(score(V_fiamb,input,type="loglik"))
+Error in match(x, table, nomatch = 0L) : object 'V_fiamb' not found
+> 
+> print("LogLik Score for Inter-IAMB:")
+[1] "LogLik Score for Inter-IAMB:"
+> print(score(V_iiamb,input,type="loglik"))
+Error in match(x, table, nomatch = 0L) : object 'V_iiamb' not found
+> 
+> print("LogLik Score for MMHC:")
+[1] "LogLik Score for MMHC:"
+> print(score(v_mmhc,input,type="loglik"))
+[1] -253775.1
+> 
+> print("LogLik Score for RSMAX2:")
+[1] "LogLik Score for RSMAX2:"
+> print(score(v_rsmax2,input,type="loglik"))
+[1] -335712.1
+> 
+> print("LogLik Score for Chow Liu:")
+[1] "LogLik Score for Chow Liu:"
+> print(score(v_cl,input,type="loglik"))  
+Error in score(v_cl, input, type = "loglik") : 
+  the graph is only partially directed.
+> 
+> sink()
+> 
+> 
+> print("K2 Score for HC:")
+[1] "K2 Score for HC:"
+> print(score(bn.hc,input,type="k2"))
+[1] -219549.7
+> 
+> print("K2  Score for GC:")
+[1] "K2  Score for GC:"
+> print(score(v_gs,input,type="k2"))
+Error in score(v_gs, input, type = "k2") : 
+  the graph is only partially directed.
+> 
+> print("K2 Score for IAMB:")
+[1] "K2 Score for IAMB:"
+> print(score(v_iamb,input,type="k2"))
+Error in match(x, table, nomatch = 0L) : object 'v_iamb' not found
+> 
+> print("K2 Score for Fast-IAMB:")
+[1] "K2 Score for Fast-IAMB:"
+> print(score(v_fiamb,input,type="k2"))
+Error in score(v_fiamb, input, type = "k2") : 
+  the graph is only partially directed.
+> 
+> print("K2 Score for Inter-IAMB:")
+[1] "K2 Score for Inter-IAMB:"
+> print(score(v_iiamb,input,type="k2"))
+Error in score(v_iiamb, input, type = "k2") : 
+  the graph is only partially directed.
+> 
+> print("K2 Score for MMHC:")
+[1] "K2 Score for MMHC:"
+> print(score(v_mmhc,input,type="k2"))
+[1] -254874.5
+> 
+> print("K2 Score for RSMAX2:")
+[1] "K2 Score for RSMAX2:"
+> print(score(v_rsmax2,input,type="k2"))
+[1] -336598.6
+> 
+> print("K2 Score for Chow Liu:")
+[1] "K2 Score for Chow Liu:"
+> print(score(v_cl,input,type="k2"))  
+Error in score(v_cl, input, type = "k2") : 
+  the graph is only partially directed.
+> 
+> sink()
